@@ -137,6 +137,7 @@ expenditure <- read.table("https://raw.githubusercontent.com/ASDS-TCD/StatsI_Fal
 #Explore the expenditure data set and import data into R
 
 Expenditure <- read.csv("C:/Users/Antonio Felix/OneDrive/Documents/GitHub/StatsI_Fall2023/problemSets/PS01/my_answers/expenditure.csv", header=T)
+setwd("C:/Users/Antonio Felix/OneDrive/Documents/GitHub/StatsI_Fall2023/problemSets/PS01/my_answers")
 
 library(readr)
 Expenditure <- read_delim("GitHub/StatsI_Fall2023/problemSets/PS01/my_answers/expenditure.csv", 
@@ -198,7 +199,13 @@ sd(Expenditure$Residents)
 sd(Expenditure$Residents)/sqrt(length((Expenditure$Residents)))
 
 cor(Expenditure$Residents,Expenditure$Spending)
+
+# I think I can delete this line, but not sure if it will affect something
+pdf(C:\Users\Antonio Felix\OneDrive\Documents\GitHub\StatsI_Fall2023\problemSets\PS01\my_answers)
+
+pdf("IMAGEP2_A.pdf")
 plot(Expenditure$Residents,Expenditure$Spending)
+dev.off()
 
 #Y & x2 = Expenditure/Spending & Urban areas
 hist(Expenditure$Urban)
@@ -208,24 +215,34 @@ sd(Expenditure$Urban)
 sd(Expenditure$Urban)/sqrt(length((Expenditure$Urban)))
 
 cor(Expenditure$Urban, Expenditure$Spending)
+pdf("IMAGEP2_A1.pdf")
 plot(Expenditure$Urban, Expenditure$Spending)
-
+dev.off()
 #X1 & X3 = Income/People on Urban areas
 cor(Expenditure$Urban, Expenditure$Income)
+pdf("IMAGEP2_A2.pdf")
 plot(Expenditure$Urban, Expenditure$Income)
+dev.off()
 
 #X2 & X3 = Residents "Financially insecure" /People on Urban areas
 cor(Expenditure$Residents, Expenditure$Urban)
+pdf("IMAGEP2_A3.pdf")
 plot(Expenditure$Residents, Expenditure$Urban)
-
+dev.off()
 
 #Answer of option B
 # Relationship between Y (Spending=Expenditure) and Region
 #Is the personal income related to the region?
 
 cor(Expenditure$Spending,Expenditure$Region)
+
+pdf("IMAGEP2_B1.pdf")
 plot(Expenditure$Region,Expenditure$Spending)
+dev.off()
+
+pdf("IMAGEP2_B2.pdf")
 ggplot(Expenditure,mapping = aes(y = Spending, x = Region))+geom_point()
+dev.off()
 
 sum(Expenditure$Spending) #Just to corroborate some calcule about the average
 
@@ -259,13 +276,14 @@ ggplot(Expenditure,mapping = aes(x = Income, y = Spending)) +
   geom_point(mapping = aes(color = Region, shape=Region))+
   geom_smooth(method = "lm")
 
+pdf("IMAGEP2_C.pdf")
 Expenditure$Region <- as.factor(Expenditure$Region)
 ggplot(Expenditure,mapping = aes(x = Income, y = Spending)) +
   geom_point(mapping = aes(color = Region, shape= Region))+
   geom_smooth(method = "lm")+
   scale_color_manual(values = c("red","blue","green","brown"))+
   scale_shape_manual(values = c("circle","triangle","square","diamond"))
-
+dev.off()
 
 
 
