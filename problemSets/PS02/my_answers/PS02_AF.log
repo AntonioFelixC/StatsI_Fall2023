@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.10.1)  15 OCT 2023 12:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.10.1)  23 OCT 2023 10:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -792,7 +792,11 @@ Package: listings 2023/02/27 1.9 (Carsten Heinz)
 File: l3backend-pdftex.def 2023-03-30 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count336
 \l__pdf_internal_box=\box76
-) (PS02_AF.aux)
+) (PS02_AF.aux
+
+LaTeX Warning: Label `' multiply defined.
+
+)
 \openout1 = `PS02_AF.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
@@ -857,40 +861,43 @@ Package hyperref Info: Link coloring OFF on input line 67.
 
 {C:/Users/Antonio Felix/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 
  []
 
-[3] [4]
-Overfull \hbox (14.92328pt too wide) in paragraph at lines 221--224
+[3]
+Overfull \hbox (14.92328pt too wide) in paragraph at lines 215--218
 []\OT1/cmr/m/n/12 Conclusion: "Up-per Class" in-di-vid-u-als are sig-nif-i-cant
 ly more likely to be in the "Stopped/-
  []
 
-[5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
-LaTeX Warning: Reference `fig:women_desc' on page 7 undefined on input line 237
+LaTeX Warning: Reference `fig:women_desc' on page 5 undefined on input line 231
 .
 
-[7] [8] [9] (PS02_AF.aux)
+[5] [6] [7] (PS02_AF.aux)
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `PS02_AF.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 26003 strings out of 476331
- 461885 string characters out of 5797554
+ 26007 strings out of 476331
+ 461921 string characters out of 5797554
  1859660 words of memory out of 5000000
- 45958 multiletter control sequences out of 15000+600000
+ 45961 multiletter control sequences out of 15000+600000
  523689 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,8n,89p,3241b,669s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,89p,3241b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Antonio Felix\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi
 600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.
 pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Prog
@@ -901,9 +908,9 @@ sfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Prog
 ram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on PS02_AF.pdf (9 pages, 149291 bytes).
+Output written on PS02_AF.pdf (7 pages, 141290 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
+ 108 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
