@@ -103,3 +103,15 @@ Regression_5 <- lm(voteshare ~ difflog + presvote, data = incumbents_subset)
 #Get summary of model with coefficient estimates
 summary(Regression_5)
 
+#Exploring the data
+summary(incumbents_subset)
+
+#Correlation Matrix
+cor_matrix <- cor(incumbents_subset[, c("voteshare", "difflog", "presvote")])
+summary(cor_matrix)
+
+# Calculate VIF values
+install.packages("car")
+library(car)
+vif_values <- vif(Regression_5)
+print(vif_values)

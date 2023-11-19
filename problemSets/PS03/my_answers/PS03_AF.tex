@@ -151,6 +151,11 @@
 			\text{Predicted Incumbent voteshare} &= 0.579031 + 0.041666 \times \text{difflog} \quad \text{(Specific coefficients)}
 		\end{align*}
 				
+		Conclusion:
+		
+		 On average, for every one unit increase in the difference in campaign spending (difflog), the incumbent's vote share (voteshare) is expected to increase by approximately 0.0417 percentage points. 		
+				
+				
 	\end{enumerate}
 	
 	
@@ -184,6 +189,7 @@
 		Multiple R-squared:  0.08795,	Adjusted R-squared:  0.08767 
 		F-statistic: 307.7 on 1 and 3191 DF,  p-value: < 2.2e-16
 	\end{verbatim}
+		
 		
 		\newpage
 		\item Make a scatterplot of the two variables and add the regression line. 	\vspace{1cm}
@@ -225,6 +231,10 @@
 			Y &= B_0 + B_1 \quad \text{(Linear Regression Model)} \\
 			\text{Predicted Presidential voteshare} &= 0.507583 + 0.023837 \times \text{difflog} \quad \text{(Specific coefficients)}
 		\end{align*}
+		
+		Conclusion: 
+		
+		On average, for every one-unit increase in the difference in campaign spending (difflog), the vote share of the presidential candidate of the incumbent's party (presvote) is expected to increase by approximately 0.0238 percentage points. 
 		
 		
 	\end{enumerate}
@@ -293,6 +303,11 @@
 			Y &= B_0 + B_1 \quad \text{(Linear Regression Model)} \\
 			\text{Pred Incumbent VoteShare} &= 0.441330 + 0.388018 \times \text{Presidential VoteShare} \quad \text{(Specific coefficients)}
 		\end{align*}
+	
+	Conclusion: 
+	
+	On average, for every one-unit increase in the vote share of the presidential candidate of the incumbent's party, the incumbent's vote share is expected to increase by approximately 0.3880 percentage points.
+	
 				
 	\end{enumerate}
 	
@@ -341,7 +356,7 @@
 	plot = ScatterplotRegression4, 
 	width = 6, height = 4, units = "in")	
 	\end{lstlisting}			
-	
+		
 	\newpage	
 	
 	\begin{figure}[H]
@@ -357,6 +372,9 @@
 	\text{Resid from Regression 1} &= -5.520 + 2.569 \times \text{Resid from Regression 2} \quad \text{(Specific coefficients)}
 	\end{align*}	
 	
+		Conclusion: 
+	
+	On average, for every one-unit increase in the residuals of regression 2, the residuals in the vote share of the presidential candidate are expected to increase by approximately 2.569 percentage points.
 	
 	\end{enumerate}
 	
@@ -398,8 +416,52 @@
 		
 		\item What is it in this output that is identical to the output in Question 4? Why do you think this is the case?
 		
-		The residual standard errors (RSE) are almost identical 0.07338 for Regression 4
-		and 0.07339 for Regression 5, this could occur because...
+		The residual standard errors (RSE) are almost identical 0.07338 for Regression 4 and 0.07339 for Regression 5, this could suggest that the of residuals around the regression line is similar in both models.
+		
+		Using a correlation matrix to explore my data, I can see there is a high positive correlation between my variables (see 3rd Quartile). 
+		
+		\begin{lstlisting}
+			#Exploring the data
+			summary(incumbents_subset)
+			
+			#Correlation Matrix
+			cor_matrix <- cor(incumbents_subset[, c("voteshare", "difflog", "presvote")])
+			summary(cor_matrix)
+		\end{lstlisting}
+		
+		\begin{verbatim}
+   voteshare         difflog          presvote     
+Min.   :0.4537   Min.   :0.2966   Min.   :0.2966  
+1st Qu.:0.5299   1st Qu.:0.4513   1st Qu.:0.3751  
+Median :0.6061   Median :0.6061   Median :0.4537  
+Mean   :0.6866   Mean   :0.6342   Mean   :0.5834  
+3rd Qu.:0.8030   3rd Qu.:0.8030   3rd Qu.:0.7268  
+Max.   :1.0000   Max.   :1.0000   Max.   :1.0000
+
+		\end{verbatim}
+		
+		I used the Variance Inflation Factor (VIF) to explore multicollinearity. However I got: 1.096432 1.096432 which discard Multicollinearity:
+		
+		VIF equal to 1 means no correlation between the independent variable and the other variables
+		
+		VIF Les than 5 Moderate correlation 
+		
+		VIF Higher than 5 High correlation 
+		
+		Note: above 10 indicate high multicollinearity
+		
+		Source: Cohen, J., Cohen, P., West, S. G., & Aiken, L. S. (2003). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Lawrence Erlbaum Associates
+		
+		\begin{lstlisting}	
+			# Calculate VIF values
+			install.packages("car")
+			library(car)
+			vif_values <- vif(Regression_5)
+			print(vif_values)
+		\end{lstlisting}
+		
+		 difflog presvote 
+		1.096432 1.096432 
 		
 	\end{enumerate}
 
