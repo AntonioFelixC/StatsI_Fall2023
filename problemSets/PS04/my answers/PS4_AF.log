@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.10.1)  3 DEC 2023 13:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.10.1)  3 DEC 2023 23:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -908,23 +908,23 @@ prof            1[]
  []
 
 [2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--201
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
 
  []
 
 [5]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
-42.
+62.
  (C:\Program Files\MiKTeX\tex/latex/base\omscmr.fd
 File: omscmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 242.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 262.
  [6] [7] [8] (PS4_AF.aux)
 Package rerunfilecheck Info: File `PS4_AF.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -950,7 +950,7 @@ msfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 ram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmtt12.pfb>
-Output written on PS4_AF.pdf (8 pages, 180342 bytes).
+Output written on PS4_AF.pdf (8 pages, 181198 bytes).
 PDF statistics:
  188 PDF objects out of 1000 (max. 8388607)
  66 named destinations out of 1000 (max. 500000)

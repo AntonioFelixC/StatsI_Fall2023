@@ -178,6 +178,14 @@ F-statistic: 34.15 on 3 and 98 DF,  p-value: 3.386e-15
 	\item [(f)]
 	What is the effect of a \$1,000 increase in income on prestige score for professional occupations? In other words, we are interested in the marginal effect of income when the variable \texttt{professional} takes the value of $1$. Calculate the change in $\hat{y}$ associated with a \$1,000 increase in income based on your answer for (c).
 	
+	\begin{align*}
+		\text{Prestige} &= 2.759 + 2.821 \cdot \text{Income} - 5.594 \cdot \text{professional} + 8.629 \cdot \text{income:professional}	
+	\end{align*}
+	
+	If income = 1,000 then 2.821 * 1,000= 2,821
+	
+	A 1,000 usd increase in income is associated with a 2,821 unit increase in the predicted Prestige score
+	for professional occupations. 			
 	\vspace{1cm}
 	
 	\newpage
@@ -185,8 +193,20 @@ F-statistic: 34.15 on 3 and 98 DF,  p-value: 3.386e-15
 	\item [(g)]
 	What is the effect of changing one's occupations from non-professional to professional when her income is \$6,000? We are interested in the marginal effect of professional jobs when the variable \texttt{income} takes the value of $6,000$. Calculate the change in $\hat{y}$ based on your answer for (c).
 	
+	\begin{align*}
+		\text{Prestige} &= 2.759 + 2.821 \cdot \text{Income} - 5.594 \cdot \text{professional} + 8.629 \cdot \text{income:professional}	
+	\end{align*}
+	\begin{align*}
+			\text{Prestige} &= B_0 + B_1 \cdot \text{Income} + B_2 \cdot \text{Professional} + B_3 \cdot \text{Income} \cdot \text{Professional} \\
+	\end{align*}
+	Change in Income = 6,000 usd
 	
+	Change in Y = 2.821 * 6,000 + 8.629 * 6,000 * 1 
 	
+	Change in Y = 68,700
+
+	The estimate change in the predicted Prestige score associated with changing one's occupation from 
+	no-professional to professional when income is 6,000 is approximately 68,700 usd. 
 	
 \end{enumerate}
 
