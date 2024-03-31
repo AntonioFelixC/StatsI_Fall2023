@@ -277,6 +277,51 @@ col = "navy60", main = "Mean by Month", border = NA)
 dev.off()
 \end{lstlisting}
 
+R STUDIO
+\begin{lstlisting}
+# Load required libraries
+library(ggplot2)
+library(cowplot)
+
+# Display the first few rows of data
+head(data)
+
+# Display the first few rows of monthly_mean_idle_index
+head(monthly_mean_idle_index)
+
+# Plotting Figure 1 again
+# Distribution of idle index (left panel)
+histogram <- ggplot(data = data, aes(x = IDLE_index)) +
+geom_histogram(binwidth = 0.005, fill = "red", color = "red", alpha = 0.8) +  # Set both fill and color to "red"
+labs(title = "Distribution of Idle Index",
+x = "Idle Index",
+y = "Frequency") +
+theme_minimal()
+
+# Mean of idle index for each month across Africa (right panel)
+lineplot <- ggplot(data = monthly_mean_idle_index, aes(x = month, y = monthly_mean_idle_index)) +
+geom_line(color = "blue", size = 1) +  # Use geom_line() for a line plot
+labs(title = "Mean Idle Index for Each Month",
+x = "Month",
+y = "Mean Idle Index") +
+theme_minimal() +
+theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability
+
+# Combine both plots
+combined_plot <- cowplot::plot_grid(histogram, lineplot, labels = "AUTO", nrow = 1)
+
+# Display the combined plot
+print(combined_plot)		
+\end{lstlisting}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Figure 1 Distribution of idle index.png}
+	\caption{Distribution of idle index}
+	\label{fig:agri_conflict}
+\end{figure}
+
+
 Generate Table 1: Agricultural idle time and armed conflict
 
 \begin{lstlisting}
@@ -291,7 +336,6 @@ egen oyfe = group(objectid year)
 
 //gen lnpy_SCAD = ln(py_SCADantigov+.1)
 
-
 est clear 
 sum SCADantigov if sample==1 
 local bl = r(mean) 
@@ -301,7 +345,6 @@ estadd local FEobj"x"
 estadd local perch =  (_b[idle_index]/`bl')*100
 di  ((_b[idle_index]*.35)/`bl')*100
 //estadd local perch50 =  ((_b[idle_index]*.63)/`bl')*100
-
 
 *eststo: reghdfe SCADantigov idle_index , absorb(ccode) vce(r)  
 *estadd local FEcountry"x"
@@ -357,7 +400,6 @@ gen py2_acled  = py_acled_bi*py_acled_bi
 gen py3_acled  = py_acled_bi*py_acled_bi*py_acled_bi
 
 
-
 sum acled_bi if sample==1 
 local bl = r(mean) 
 
@@ -405,7 +447,6 @@ replace ;
 
 ** UCDP ***
 
-
 *gen UCDP_bi = (UCDP_Violent_init_count>0)
 *replace UCDP_bi = . if UCDP_Violent_init_count==.
 
@@ -418,13 +459,9 @@ gen py2_ucdp  = py_UCDP_bi*py_UCDP_bi
 gen py3_ucdp  = py_UCDP_bi*py_UCDP_bi*py_UCDP_bi
 
 
-
-
-
 est clear 
 sum UCDP_bi if sample_ucdp==1 
 local bl = r(mean) 
-
 
 est clear
 eststo: reghdfe UCDP_bi idle_index , absorb(objectid ) vce(r)  
@@ -467,12 +504,61 @@ stats(perch N r2 FEobj FEoy FEmo TP PY, fmt(%3.2f %18.0g %12.2f) labels(`"Per. C
 replace ; 
 #delimit cr 
 
-	
 \end{lstlisting}
+
+\newpage
+STATA
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Table 1 Agricultural idle time and armed conflict.png}
+	\caption{Agricultural idle time and armed conflict}
+	\label{fig:agri_conflict}
+\end{figure}
+
+
+\begin{verbatim}
+R Studio	
+Table 1 Agricultural idle time and armed conflict
+
+	|Dataset  | Estimate|     SE| Perc Change| Observations|   R2|
+	|:--------|--------:|------:|-----------:|------------:|----:|
+	|SCAD     |   0.0032| 0.0009|        20.8|       242928| 0.08|
+	|SCAD     |   0.0032| 0.0008|        20.8|       242928| 0.33|
+	|SCAD     |   0.0032| 0.0008|        20.8|       242928| 0.33|
+	|SCAD     |   0.0035| 0.0008|        22.9|       242928| 0.33|
+	|SCAD     |   0.0028| 0.0009|        18.6|       241248| 0.33|
+	|SCAD     |   0.0029| 0.0008|        18.8|       242928| 0.34|
+	|ACLED    |   0.0083| 0.0021|         9.9|       182196| 0.22|
+	|ACLED    |   0.0083| 0.0018|         9.9|       182196| 0.47|
+	|ACLED    |   0.0083| 0.0018|         9.9|       182196| 0.47|
+	|ACLED    |   0.0101| 0.0018|        12.1|       182196| 0.47|
+	|ACLED    |   0.0081| 0.0021|         9.6|       182196| 0.47|
+	|ACLED    |   0.0101| 0.0018|        12.1|       182196| 0.47|
+	|UCDP-GED |   0.0035| 0.0014|         8.3|       242928| 0.17|
+	|UCDP-GED |   0.0035| 0.0011|         8.3|       242928| 0.45|
+	|UCDP-GED |   0.0035| 0.0011|         8.3|       242928| 0.45|
+	|UCDP-GED |   0.0037| 0.0012|         8.7|       242928| 0.45|
+	|UCDP-GED |   0.0032| 0.0013|         7.5|       241248| 0.45|
+	|UCDP-GED |   0.0037| 0.0012|         8.7|       242928| 0.46|	
+	
+\end{verbatim}
+
+Dependent Variables: Three different measures of conflict are used: SCAD (Social Conflict Analysis Database), ACLED (Armed Conflict Location Event Dataset), and UCDP-GED (Uppsala Conflict Data Program-Georeferenced Event Dataset). Each measure captures different aspects of political violence.
+
+Independent Variable: The agricultural idle index is the main independent variable of interest. The coefficients indicate the change in the probability of conflict occurrence associated with a one-unit increase in the idle index.
+
+
+The coefficients for the idle index are statistically significant across all specifications and outcome variables, indicated by the p-values (p < 0.01 or *p < 0.001).
+The magnitude of the coefficients suggests that an increase in the agricultural idle index is associated with a significant increase in the probability of conflict occurrence. For example, in the SCAD model, a one-unit increase in the idle index is associated with a 20.8% increase in the probability of conflict.
+The models' explanatory power, indicated by the R-squared values, varies across specifications but generally falls within the range of 0.08 to 0.47, suggesting moderate to substantial explanatory power.
+
+
+\newpage
 
 Generate Table 2: Idle index post-2000 - SCAD
 
 \begin{lstlisting}
+STATA
 est clear 
 sum SCADantigov  if sample==1 &  year>2000
 local bl = r(mean) 
@@ -519,14 +605,35 @@ replace ;
 #delimit cr 
 \end{lstlisting}
 
+STATA
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.0\textwidth]{Table 2 Idle index post-2000 - SCAD.png}
+	\caption{Idle index post-2000 - SCAD}
+	\label{fig:agri_conflict}
+\end{figure}
 
+R Studio
+
+Table 2 Idle index post-2000 - SCAD
 \begin{verbatim}
-	
-	
-	
+| Estimate|     SE| Perc Change| Observations|   R2|
+|--------:|------:|-----------:|------------:|----:|
+|   0.0037| 0.0013|        17.8|       147492| 0.12|
+|   0.0037| 0.0012|        17.8|       147492| 0.34|
+|   0.0037| 0.0012|        17.8|       147492| 0.34|
+|   0.0043| 0.0012|        20.9|       147492| 0.34|
+|   0.0038| 0.0013|        18.3|       146472| 0.34|
+|   0.0035| 0.0012|        17.1|       147492| 0.35|
 \end{verbatim}
 
+The coefficients for the idle index remain statistically significant across all specifications and outcome variables, denoted by the significance levels (p < 0.01 or *p < 0.001).
+Consistent with the findings from Table 1, the coefficients indicate a positive association between agricultural idle time and the likelihood of conflict occurrence. For instance, in the SCAD model, a one-unit increase in the idle index is associated with a 17.8 percentage increase in the probability of conflict.
+The explanatory power of the models, as indicated by the R-squared values, remains moderate to substantial, ranging from 0.12 to 0.35.
 
+Overall, the results from Table 2 reaffirm the positive association between agricultural idle time and conflict occurrence, even when focusing specifically on the post-2000 period
+
+\newpage
 \section*{Contribution}
 
 Generate R Studio Code for replication of the main tables and figures. 
@@ -534,6 +641,7 @@ Generate R Studio Code for replication of the main tables and figures.
 \section*{Conclusion}
 About the dataset: 
 Choosing a different academic paper where the code is already in R Studio, can avoid wasted time and allow us to focus on the paper's goal.
+An explanation about the variables in the dataset is missing this potentially could help to improve the contribution on the study. 
 
 
 \end{document}
